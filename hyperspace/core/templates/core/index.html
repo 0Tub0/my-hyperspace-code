@@ -1,0 +1,30 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- One -->
+<section id="one" class="wrapper style3 fade-up">
+    <div class="inner">
+        <h2>What we do</h2>
+        <p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+        
+        <div class="features">
+
+
+            {% for service in featured_services %}
+            <a href="{% url 'service_detail' service.slug %}"> <!-- #pembe sayfada da tıklanmasını sağlıyor -->
+            <section>
+                <span class="{{ service.icon_class }}"></span>
+                <h3>{{ service.title }}</h3>
+                <p>{{ service.description|truncatechars:100 }}</p>
+            </section>
+            </a>
+            {% endfor %}
+        </div>
+
+        <ul class="actions">
+            <li><a href="{% url 'service_list' %}" class="button">Services</a></li>
+        </ul>
+    </div>
+</section>
+{% endblock %}
